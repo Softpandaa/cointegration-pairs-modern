@@ -1,0 +1,4 @@
+archive/
+latex/
+__pycache__/
+*.pyc
