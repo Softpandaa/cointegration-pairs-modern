@@ -18,7 +18,7 @@ The report is distributed as a compiled PDF. Its typesetting source is not inclu
 
 ## Data
 
-`data/membership_spells.csv` holds the S&P 500 membership spells derived from the point-in-time constituent lists of https://github.com/fja05680/sp500. `data/ticker_map.csv` maps renamed tickers to their Yahoo symbols, and `data/exclude.csv` lists the Yahoo series that are excluded, with the reason for each. `data/prices.csv.gz` holds the daily adjusted closing prices from Yahoo Finance, 2000 to 2025 and `data/sectors.csv` their sectors, with one sector filled by hand in `data/sector_fill.csv`.
+`data/membership_spells.csv` holds the [S&P 500 membership ](https://github.com/fja05680/sp500). `data/ticker_map.csv` maps renamed tickers to their Yahoo symbols, and `data/exclude.csv` lists the Yahoo series that are excluded, with the reason for each. `data/prices.csv.gz` holds the daily adjusted closing prices from Yahoo Finance, 2000 to 2025 and `data/sectors.csv` their sectors, with one sector filled by hand in `data/sector_fill.csv`.
 
 ## Reproducing
 
