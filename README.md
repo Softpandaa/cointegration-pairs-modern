@@ -4,7 +4,7 @@ This study examines the out-of-sample profitability of cointegration-based pair 
 
 ## Findings
 
-No formation choice can consistently generate profit on its own. In the testing period 2020 to 2025, the top decile of every method loses between 0.70% and 1.34% a year. The formation p-value does not rank returns, neither the grouping nor the window changes the sign. The mean reversion selected at formation persists little more than that of spreads formed on random walks.
+No formation choice can consistently generate profit on its own. In the testing period 2020 to 2025, the top decile of every method loses between 0.70% and 1.34% a year. The formation p-value does not consistently rank returns, and neither the grouping nor the window changes the sign. The mean reversion selected at formation persists little more than that of spreads formed on random walks.
 
 ## Layout
 
@@ -19,7 +19,7 @@ The report and slides are distributed as compiled PDFs. Their typesetting source
 
 ## Data
 
-`data/membership_spells.csv` holds the [S&P 500 membership ](https://github.com/fja05680/sp500). `data/ticker_map.csv` maps renamed tickers to their Yahoo symbols, and `data/exclude.csv` lists the Yahoo series that are excluded, with the reason for each. `data/prices.csv.gz` holds the daily adjusted closing prices from Yahoo Finance, 2000 to 2025 and `data/sectors.csv` their sectors, with one sector filled by hand in `data/sector_fill.csv`.
+`data/membership_spells.csv` holds the [S&P 500 membership](https://github.com/fja05680/sp500). `data/ticker_map.csv` maps renamed tickers to their Yahoo symbols, and `data/exclude.csv` lists the Yahoo series that are excluded, with the reason for each. `data/prices.csv.gz` holds the daily adjusted closing prices from Yahoo Finance, 2000 to 2025 and `data/sectors.csv` their sectors, with one sector filled by hand in `data/sector_fill.csv`.
 
 ## Reproducing
 
