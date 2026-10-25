@@ -9,7 +9,7 @@ No formation choice can consistently generate profit on its own. In the testing 
 ## Layout
 
 ```
-data/     committed membership, sectors and prices
+data/     committed membership with sectors, and prices
 src/      analysis modules, every parameter declared once in config.py
 report.pdf
 slides.pdf
@@ -19,7 +19,7 @@ The report and slides are distributed as compiled PDFs. Their typesetting source
 
 ## Data
 
-`data/membership_spells.csv` holds the [S&P 500 membership](https://github.com/fja05680/sp500). `data/ticker_map.csv` maps renamed tickers to their Yahoo symbols, and `data/exclude.csv` lists the Yahoo series that are excluded, with the reason for each. `data/prices.csv.gz` holds the daily adjusted closing prices from Yahoo Finance, 2000 to 2025 and `data/sectors.csv` their sectors, with one sector filled by hand in `data/sector_fill.csv`.
+`data/members.csv` holds the point-in-time [S&P 500 membership](https://github.com/fja05680/sp500) mapped to Yahoo Finance symbols, one row per membership spell with usable prices, with the sector of the stock. `data/prices.csv.gz` holds the daily adjusted closing prices of these stocks from Yahoo Finance, 2005 to 2025.
 
 ## Reproducing
 

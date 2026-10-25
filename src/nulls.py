@@ -11,7 +11,7 @@ import pandas as pd
 
 from src.combine import adf_t, c1_pairs, c2_johansen, c3_pca, c3b_zry, c4_stock_vs_rest
 from src.config import (BASKET, CHUNK, DATA, DAYS_PER_STOCK, DRAWS, DRAWS_C1, H_GRID, L_GRID,
-                        MONTH_DAYS, NULL_CELLS, RESULTS, SIGMA_SPAN, TRADING_DAYS)
+                        MONTH_DAYS, NULL_CELLS, SIGMA_SPAN, TRADING_DAYS)
 from src.measures import legs, measures
 
 T_GRID = [TRADING_DAYS * L for L in L_GRID]
@@ -20,10 +20,8 @@ T_GRID = [TRADING_DAYS * L for L in L_GRID]
 @cache
 def sigma_pool():
     """Daily log return s.d. of each usable stock with at least a year of returns."""
-    ok = pd.read_csv(RESULTS / "universe.csv").query("status == 'ok'").symbol.unique()
-    px = pd.read_csv(DATA / "prices.csv.gz", usecols=["Date", "Ticker", "Close"],
-                     parse_dates=["Date"])
-    px = px[px.Ticker.isin(ok) & (px.Date >= SIGMA_SPAN[0]) & (px.Date < SIGMA_SPAN[1])]
+    px = pd.read_csv(DATA / "prices.csv.gz", parse_dates=["Date"])
+    px = px[(px.Date >= SIGMA_SPAN[0]) & (px.Date < SIGMA_SPAN[1])]
     px = px.sort_values(["Ticker", "Date"])
     r = np.log(px.Close).groupby(px.Ticker).diff()
     g = r.groupby(px.Ticker)

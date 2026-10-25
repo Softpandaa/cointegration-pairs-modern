@@ -10,10 +10,7 @@ FIGURE = ROOT / "latex" / "cumulative.png"
 
 # Sample ----------------------------------------------------------------------
 SAMPLES = {"train": ("2010-01-01", "2019-12-31"), "test": ("2020-01-01", "2025-12-31")}
-PRICE_SPAN = ("2000-01-03", "2026-01-01")   # membership coverage, end exclusive
 SIGMA_SPAN = ("2005-01-01", "2020-01-01")   # sigma_i of the null, end exclusive
-MIN_COVER = 0.95                            # share of a spell's days with a price
-START_SLACK_DAYS = 14                       # later series start: ticker reused
 TRADING_DAYS = 252
 MONTH_DAYS = 21
 

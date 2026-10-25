@@ -6,19 +6,14 @@ from scipy.spatial.distance import squareform
 from scipy.stats import rankdata
 from sklearn.cluster import OPTICS
 
-from src.config import DATA, L_GRID, MIN_SAMPLES, RESULTS
+from src.config import DATA, L_GRID, MIN_SAMPLES
 
 
 def load():
-    u = pd.read_csv(RESULTS / "universe.csv", parse_dates=["start", "end"])
-    ok = u[u.status == "ok"]
-    px = pd.read_csv(DATA / "prices.csv.gz", usecols=["Date", "Ticker", "Close"],
-                     parse_dates=["Date"])
-    px = px[px.Ticker.isin(ok.symbol)]
+    ok = pd.read_csv(DATA / "members.csv", parse_dates=["start", "end", "valid_from"])
+    px = pd.read_csv(DATA / "prices.csv.gz", parse_dates=["Date"])
     px = px.pivot_table(index="Date", columns="Ticker", values="Close").sort_index()
-    ex = pd.read_csv(DATA / "exclude.csv").dropna(subset=["until"])
-    t2s = u.drop_duplicates("ticker").set_index("ticker").symbol
-    valid_from = pd.to_datetime(ex.set_index(ex.ticker.map(t2s)).until).groupby(level=0).max()
+    valid_from = ok.dropna(subset=["valid_from"]).groupby("symbol").valid_from.max()
     sector = ok.drop_duplicates("symbol").set_index("symbol").sector
     return ok, px, valid_from, sector
 
