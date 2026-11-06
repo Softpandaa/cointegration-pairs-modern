@@ -1,15 +1,17 @@
 # Do Cointegration-based Pairs Remain Profitable?
 
-This study examines the out-of-sample profitability of cointegration-based pair formation in the S&P 500 from 2010 to 2025, and whether it depends on the combination method, the stock grouping or the window length. Spreads are formed by five methods (pairs, Johansen, principal components, eigenanalysis and stock versus group) within sectors and two kinds of correlation-based clusters, and traded by the 2-standard-deviation threshold rule of Gatev, Goetzmann and Rouwenhorst (2006).
+This study tests whether cointegration-based pair formation remains profitable out of sample in the S&P 500, 2010 to 2025. Spreads are formed by five methods (pairs, Johansen, principal components, eigenanalysis and stock versus group) within sectors and correlation-based clusters over 1- to 5-year windows, and traded by the 2-standard-deviation rule of Gatev, Goetzmann and Rouwenhorst (2006).
 
 ## Findings
 
-No formation choice can consistently generate profit on its own. In the testing period 2020 to 2025, the top decile of every method loses between 0.70% and 1.34% a year. The formation p-value does not consistently rank returns, and neither the grouping nor the window changes the sign. The mean reversion selected at formation persists little more than that of spreads formed on random walks.
+No formation choice is profitable on its own. From 2020 to 2025, the top decile of every method loses between 0.70% and 1.34% a year after costs, and neither the grouping nor the window changes the sign.
+
+The formation p-value does not consistently rank later returns, and the mean reversion found at formation persists little more than in spreads formed on independent random walks.
 
 ## Layout
 
 ```
-data/     committed membership with sectors, and prices
+data/     index membership with sectors, and daily prices
 src/      analysis modules, every parameter declared once in config.py
 report.pdf
 ```
@@ -18,7 +20,7 @@ The report is distributed as a compiled PDF. Its typesetting source is not inclu
 
 ## Data
 
-`data/members.csv` holds the point-in-time [S&P 500 membership](https://github.com/fja05680/sp500) mapped to Yahoo Finance symbols, one row per membership spell with usable prices, with the sector of the stock. `data/prices.csv.gz` holds the daily adjusted closing prices of these stocks from Yahoo Finance, 2005 to 2025.
+`data/members.csv` lists the point-in-time [S&P 500 membership](https://github.com/fja05680/sp500), one row per membership spell with usable prices, with the Yahoo Finance symbol and sector of each stock. `data/prices.csv.gz` holds their daily adjusted closing prices from Yahoo Finance, 2005 to 2025.
 
 ## Reproducing
 
@@ -30,4 +32,4 @@ python -m src.run
 python -m src.report
 ```
 
-`src.run` forms and evaluates the spreads of both samples, and `src.report` prints every number quoted in the report and writes its figure to `latex/cumulative.png`, which is created on the first run and is not tracked.
+`src.run` forms and evaluates the spreads of both samples. `src.report` then prints every number quoted in the report and draws its figure.
